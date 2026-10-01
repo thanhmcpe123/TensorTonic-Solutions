@@ -8,16 +8,8 @@ def mean_median_mode(x: list) -> dict:
     # Write code here
     x = np.asarray(x)
 
-    count = {}
-    max_key = x[0]
-    max_value = 1
-    for xi in x:
-        if xi in count:
-            count[xi] += 1
-            if max_value < count[xi]:
-                max_key = xi
-                max_value = count[xi]
-        else:
-            count[xi] = 1
-    dict = {"mean": float(np.mean(x)), "median": float(np.median(x)), "mode": float(max_key)}
+    counts = Counter(x.tolist())
+    highest_frequency = max(counts.values())
+    mode = min(value for value, count in counts.items() if count == highest_frequency)
+    dict = {"mean": float(np.mean(x)), "median": float(np.median(x)), "mode": float(mode)}
     return dict
