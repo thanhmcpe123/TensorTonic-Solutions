@@ -6,7 +6,7 @@ def bernoulli_pmf_and_moments(x: list, p: float) -> dict:
     """
     # Write code here
     x = np.asarray(x, dtype=float)
-    pmf = (1 - x) + (-1)**(1 - x) * p
+    pmf = np.where(x == 1, p, 1.0 - p).astype(float)
     mean = float(p)
     var = float(p*(1-p))
     return {"pmf": pmf, "mean": mean, "variance": var}
