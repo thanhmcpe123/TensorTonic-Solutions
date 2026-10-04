@@ -7,4 +7,4 @@ def covariance_matrix(X: list) -> np.ndarray:
     # Write code here
     X = np.asarray(X, dtype=float)
     X_c = X - np.mean(X, axis=0)
-    return ((X_c.T @ X_c)/(X.shape[0] - 1))
+    return X_c.T @ X_c / (X.shape[0] - 1)
